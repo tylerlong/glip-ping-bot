@@ -8,3 +8,12 @@ A [Glip](https://glip.com/) bot for RingCentral developers.
 ```
 yarn install
 ```
+
+
+## Run
+
+```
+yarn build:watch
+yarn start
+yarn ngrok
+```

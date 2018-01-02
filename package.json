@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "commander": "^2.12.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "ringcentral-ts": "^0.9.1"
   }
 }

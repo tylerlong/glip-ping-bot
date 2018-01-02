@@ -2,6 +2,7 @@ import commander from 'commander'
 import express from 'express'
 
 import pkg from '../package.json'
+import './rc'
 
 commander.version(pkg.version)
   .option('-p --port <port>', 'Specify port')
@@ -10,7 +11,11 @@ commander.version(pkg.version)
 const port = commander.port || 3000
 
 const app = express()
-app.get('/', function (req, res) {
-  res.send('Hello World')
+app.get('/oauth', function (req, res) {
+  res.send('oauth')
+})
+app.post('/webhook', function (req, res) {
+  res.set('validation-token', req.get('validation-token'))
+  res.send('')
 })
 app.listen(port)
