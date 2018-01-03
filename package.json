@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "commander": "^2.12.2",
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
-    "ringcentral-ts": "^0.9.1"
+    "ringcentral-js-concise": "^0.1.0"
   }
 }
