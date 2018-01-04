@@ -2,7 +2,6 @@ import commander from 'commander'
 import express from 'express'
 
 import pkg from '../package.json'
-import './rc'
 
 commander.version(pkg.version)
   .option('-p --port <port>', 'Specify port')
