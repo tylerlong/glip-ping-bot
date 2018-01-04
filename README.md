@@ -7,6 +7,8 @@ A [Glip](https://glip.com/) bot for RingCentral developers.
 
 ```
 yarn install
+co .env.sample .env
+edit .env
 ```
 
 
