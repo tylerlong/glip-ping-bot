@@ -46,9 +46,11 @@ app.post('/webhook', (req, res) => {
   res.send('')
   console.log(req.body)
   const message = req.body.body
-  if (message.type === 'TextMessage') {
+  if (message && message.type === 'TextMessage') {
     if (message.text === 'ping') {
-      rc.post('/restapi/v1.0/glip/posts', { groupId: message.groupId, text: 'pong' })
+      rc.post('/restapi/v1.0/glip/posts', { groupId: message.groupId, text: 'pong' }).catch(e => {
+        console.log(e.response.body)
+      })
     }
   }
 })
