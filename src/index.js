@@ -25,26 +25,25 @@ app.use(bodyParser.json())
 app.get('/oauth', async (req, res) => {
   try {
     await rc.authorize({ code: req.query.code, redirect_uri: `${process.env.GLIP_BOT_SERVER}/oauth` })
-    fs.writeFileSync(tokenFile, JSON.stringify(rc.token())) // save token
-    res.status(200)
-    res.send('')
   } catch (e) {
-    res.status(500)
-    res.send(e.message)
+    console.error(e.response.data)
   }
-})
-app.post('/webhook', (req, res) => {
-  res.set('validation-token', req.get('validation-token'))
+  fs.writeFileSync(tokenFile, JSON.stringify(rc.token())) // save token
   res.send('')
-  console.log(req.body)
+})
+app.post('/webhook', async (req, res) => {
   const message = req.body.body
   if (message && message.type === 'TextMessage') {
     if (message.text === 'ping') {
-      rc.post('/restapi/v1.0/glip/posts', { groupId: message.groupId, text: 'pong' }).catch(e => {
-        console.log(e.response.body)
-      })
+      try {
+        await rc.post('/restapi/v1.0/glip/posts', { groupId: message.groupId, text: 'pong' })
+      } catch (e) {
+        console.error(e.response.data)
+      }
     }
   }
+  res.set('validation-token', req.get('validation-token'))
+  res.send('')
 })
 
 commander.version(pkg.version).option('-p --port <port>', 'Specify port').parse(process.argv)
