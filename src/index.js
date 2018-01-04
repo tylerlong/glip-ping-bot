@@ -10,23 +10,15 @@ import bodyParser from 'body-parser'
 import pkg from '../package.json'
 
 dotenv.config()
-
+const tokenFile = path.join(__dirname, '..', '.token')
 const rc = new RingCentral(
   process.env.GLIP_CLIENT_ID,
   process.env.GLIP_CLIENT_SECRET,
   process.env.GLIP_API_SERVER
 )
-
-const tokenFile = path.join(__dirname, '..', '.token')
 if (fs.existsSync(tokenFile)) { // restore token
   rc.token(JSON.parse(fs.readFileSync(tokenFile, 'utf-8')))
 }
-
-commander.version(pkg.version)
-  .option('-p --port <port>', 'Specify port')
-  .parse(process.argv)
-
-const port = commander.port || 3000
 
 const app = express()
 app.use(bodyParser.json())
@@ -54,4 +46,6 @@ app.post('/webhook', (req, res) => {
     }
   }
 })
-app.listen(port)
+
+commander.version(pkg.version).option('-p --port <port>', 'Specify port').parse(process.argv)
+app.listen(commander.port || 3000)
