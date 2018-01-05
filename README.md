@@ -7,7 +7,7 @@ A [Glip](https://glip.com/) bot for RingCentral developers.
 
 ```
 yarn install
-co .env.sample .env
+cp .env.sample .env
 edit .env
 ```
 
@@ -15,7 +15,6 @@ edit .env
 ## Run
 
 ```
-yarn build:watch
 yarn start
 yarn ngrok
 ```

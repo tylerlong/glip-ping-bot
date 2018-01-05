@@ -1,13 +1,12 @@
-import 'babel-polyfill'
-import dotenv from 'dotenv'
-import commander from 'commander'
-import express from 'express'
-import RingCentral from 'ringcentral-js-concise'
-import fs from 'fs'
-import path from 'path'
-import bodyParser from 'body-parser'
+const dotenv = require('dotenv')
+const commander = require('commander')
+const express = require('express')
+const RingCentral = require('ringcentral-js-concise')
+const fs = require('fs')
+const path = require('path')
+const bodyParser = require('body-parser')
 
-import pkg from '../package.json'
+const pkg = require('./package.json')
 
 dotenv.config()
 const tokenFile = path.join(__dirname, '..', '.token')
