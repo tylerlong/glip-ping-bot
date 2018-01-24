@@ -1,6 +1,6 @@
-# ringcentral-developers-bot
+# glip-ping-bot
 
-A [Glip](https://glip.com/) bot for RingCentral developers.
+Very simple Glip bot that replies "pong" if you send it "ping"
 
 
 ## Setup
