@@ -4,21 +4,21 @@
   "description": "A Glip bot for RingCentral developers.",
   "license": "MIT",
   "scripts": {
-    "upgrade": "yarn-run-upgrade",
+    "upgrade": "yarn-upgrade-all",
     "start": "node index.js -p 3000",
     "ngrok": "ngrok http 3000",
     "test": "node test/index.js"
   },
   "devDependencies": {
-    "ngrok": "^2.2.24",
+    "ngrok": "^2.2.25",
     "standard": "^10.0.3",
-    "yarn-upgrade-all": "^0.2.1"
+    "yarn-upgrade-all": "^0.3.0"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
-    "commander": "^2.12.2",
+    "commander": "^2.13.0",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
-    "ringcentral-js-concise": "^0.1.0"
+    "ringcentral-js-concise": "^0.2.0"
   }
 }
